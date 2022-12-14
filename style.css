@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --soft-orange: hsl(35, 77%, 62%);
+    --softred: hsl(5, 85%, 63%);
+    --off-white: hsl(36, 100%, 99%);
+    --grayish-blue: hsl(233, 8%, 79%);
+    --dark-grayish-blue: hsl(236, 13%, 42%);
+    --very-dark-blue: hsl(240, 100%, 5%);
+}
+body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+}
+body.unactive { overflow: hidden; }
+a { 
+    transition: .25s;
+    text-decoration: none;
+ }
+li { list-style: none; }
+
+#header {
+    position: sticky;
+    top: 0;
+    right: 0;
+    left: 0;
+    transition: .45s;
+    background-color: rgba(255, 255, 255, 1);
+}
+#header.active { background-color: rgba(255, 255, 255, .9); }
+.nav {
+    max-width: 68rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    padding: 2.15rem .75rem;
+}
+.nav-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2em;
+}
+.nav-link a { color: var(--dark-grayish-blue); }
+.nav-link a:hover { color: var(--softred);}
+.burger-btn { display: none; }
+#main {
+    max-width: 68.75rem;
+    display: flex;
+    margin: auto;
+    margin-bottom: 2rem;
+    padding: 0 .75rem;
+    gap: 1.5rem;
+}
+.intro-sect { flex: 2.5; }
+.banner > * { width: 100%; }
+.intro-txt-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1.25em 0;
+    margin-bottom: 0;
+}
+.title {
+    width: 40%;
+    font-size: 2.85rem;
+    font-weight: 800;
+}
+.intro-txt-btn { width: 50%; }
+.intro-txt-btn p {
+    padding-bottom: 2em;
+    color: var(--dark-grayish-blue);
+    line-height: 1.6em;
+}
+.read-more-btn {
+    color: var(--off-white);
+    padding: .75em 2em;
+    text-transform: uppercase;
+    background-color: var(--softred);
+    display: inline-block;
+}
+.read-more-btn:hover { background-color: var(--very-dark-blue); }
+.new-sect {
+    flex: 1;
+    padding: 2.25em 1.75em;
+    background-color: var(--very-dark-blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.new-title { color: var(--soft-orange); }
+.new-box {  padding: 1em 0; }
+.new-box:not(.new-box:last-child) { border-bottom: .1rem solid var(--grayish-blue); }
+.new-box a {
+    color: var(--off-white);
+    font-size: 1rem;
+    font-weight: 700;
+}
+.new-box a:hover { color: var(--soft-orange); }
+.new-box p {
+    margin: 1.25em 0;
+    color: var(--grayish-blue);
+}
+.article-sect {
+    max-width: 68.75rem;
+    margin: auto;
+    padding: 1rem .75rem;
+    padding-bottom: 4rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1.75em;
+    flex-wrap: wrap;
+}
+.article {
+    display: flex;
+    flex: 1;
+    min-width: 16rem;
+}
+.article img {
+    width: 6rem;
+    margin-right: 1rem;
+}
+.article-numb {
+    font-size: 2rem;
+    color: var(--grayish-blue);
+    font-weight: 700;
+}
+.article-title a {
+    font-size: 1rem;
+    color: var(--very-dark-blue);
+    font-weight: 700;
+}
+.article-title a:hover { color: var(--softred); }
+.article-txt p {
+    color: var(--dark-grayish-blue);
+    font-size: 0.75rem;
+    padding-top: 1em;
+}
+
+@media (width <= 850px) {
+
+    #main { flex-direction: column; }
+    .intro-txt-wrapper { flex-direction: column; }
+    .title { width: 100%; }
+    .intro-txt-btn { width: 100%; }
+
+}
+
+@media (width <= 500px) {
+
+    .nav-links {
+        width: 60%;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        background-color: var(--off-white);
+        opacity: 0;
+        pointer-events: none;
+        transition: .25s;
+        margin: -30% 0 0 0;
+        padding-left: 1rem;
+        z-index: 999;
+        background-color: var(--off-white);
+        overflow: scroll;
+    }
+    .nav-links::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        right: 60%;
+        background-color: rgba(0,0,0,.7);
+        z-index: -1;
+    }
+    .nav-links.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+    .nav-link a { font-size: clamp(1rem, 5vw, 2rem); }
+    .burger-btn {
+        display: inline-block;
+        z-index: 99999;
+    }
+    #main, .intro-txt-wrapper { flex-direction: column; }
+
+}
